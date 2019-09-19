@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="">
+	<p>FirstName: <input type="text" ng-model="FirstName"></p>
+	<p ng-bind="FirstName"></p>
+
+	<hr>
+
+	<p>SecondName: <input type="text" data-ng-model="SecondName" data-ng-init = "SecondName = 'John'"></p>
+	<p data-ng-bind="SecondName"></p>
+
+	<hr>
+
+	<p>ThirdMethod: <input type="text" ng-model="ThirdMethod"></p>
+	<p>{{ThirdMethod}}</p>
+
+	<hr>
+
+	<p>first Expression {{5-1}} </p>
+
+	<hr>
+
+	<div ng-app="" ng-init="myCol='yellow'">
+
+		<input style="background-color:{{myCol}}" ng-model="myCol">
+
+	</div>
+
+	<div ng-app = "" ng-init = "num1=1;num2=4">
+		<p>{{num1 + num2}}</p>
+		<p><span ng-bind = "num1 * num2"></span></p>
+	</div>
+
+	<div ng-app = "" ng-init = "string1 = 'um';string2 = 'hyejin'">
+		<p>first : {{string1 + " " +string2}}</p>
+		<p><span ng-bind = "string1 + '' + string2"></span></p>
+	</div>
+	
+	<div ng-app = "" ng-init = "string1 = 'um';string2 = 'hyejin'">
+		<p>first : {{string1 + " " +string2}}</p>
+		<p><span ng-bind = "string1 + '' + string2"></span></p>
+	</div>
+
+	<div ng-app = "" ng-init = "person={firstName:'john',lastName: 'Deo'}">
+		<p>The name is {{person}}</p>
+		<p>the firstName is {{person.firstName}}</p>
+		<p> the lastName is <span ng-bind="person.lastName"></span></p>
+	</div>
+
+	<div ng-app = "" ng-init = "points=[1,15,19,2,40]">
+		<p>points are {{points}}</p>
+		<p>first point is {{points[1]}}
+	</div>
+	
+</div>
+
+</body>
+</html>

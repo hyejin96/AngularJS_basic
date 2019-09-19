@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<!-- 모듈 만들기 -->
+<div ng-app="myApp" ng-controller = "myCtrl">
+	<p>FirstName: 
+		<input type="text" ng-model="firstName">
+		<input type="text" ng-model="lastName">	
+	</p>
+
+	<p>{{firstName + " " + lastName}}</p>	
+	<hr>
+	<p ng-bind = "firstName"></p>
+	<hr>
+	<h1 ng-click = "changeName()">{{firstName}}</h1>
+	<hr>
+	full Name : {{fullName()}}
+</div>
+
+<hr>
+
+<script>
+	// myApp은 응용 프로그램이 실행되는 html 요소의미
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope){
+		$scope.firstName = "John";
+		$scope.lastName = "Doe";
+		$scope.changeName = function() {
+			$scope.firstName = "Nelly";
+		};
+		$scope.fullName = function() {
+			return $scope.firstName + " " + $scope.lastName;
+		};
+	});
+
+</script>
+</body>
+</html>

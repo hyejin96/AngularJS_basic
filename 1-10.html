@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>		
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app = "myApp">
+	<hr>
+	<!-- restrict: "E"  -->
+	<test-dirctive></test-dirctive>
+	<hr>
+	<!-- restrict: "A"  -->
+	<div test-dirctive></div> 
+	<hr>
+	<!-- restrict: "C"  -->
+	<div class="test-dirctive"></div>
+	<hr>
+	<script>
+		var app = angular.module("myApp", []);
+		app.directive("testDirctive", function(){
+				return {
+					// restrict: "A" -> html속성값 사용
+					// restrict: "E" -> 디렉티브를 html태그와 같은 형식으로 사용
+					// restrict: "C" -> 태그의 클래스명으로 지정하여 사용
+					restrict: "ACE",
+					template: "<h1>this is dirctive</h1>"
+				}
+		});
+	</script>
+</body>
+</html>

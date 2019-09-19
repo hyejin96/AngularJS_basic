@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<div ng-app = "" ng-init="firstName = 'John';num1 = 1;num2 = 2">
+		<p>Name : <input type = "text" ng-model = "firstName"></p>
+		<p>You wrote : {{firstName}}</p>
+		
+		<hr>
+		
+		<p>num1 : <input type = "number" ng-model = "num1"></p>
+		<p>num2 : <input type = "number" ng-model = "num2"></p>
+		
+		<p><b>total</b> {{num1 + num2}}</p>
+	</div>
+</body>
+</html>

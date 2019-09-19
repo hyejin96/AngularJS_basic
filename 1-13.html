@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<title>	</title>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="ctrl1">
+		<p>{{lastName | uppercase}}</p>
+		<p>{{firstName | lowercase}}</p>
+
+		<hr>
+
+		<ul>
+			<li ng-repeat = "x in names | orderBy:'country'">
+				{{x.name + ', ' + x.country}}
+			</li>
+		</ul>
+
+		<hr>
+
+		<h1>Price : {{price | currency}}</h1>
+
+		<hr>
+
+		<h1>Date : {{today | date}}</h1>
+
+		<hr>
+
+		<ul>
+			<li ng-repeat="x in names | filter: 'n'">
+				{{x.name}}
+			</li>
+		</ul>
+
+		<hr>
+		
+		<p><input type="text" ng-model="test"></p>
+
+		<ul>
+		  <li ng-repeat="x in names | filter:test">
+		    {{ x }}
+		  </li>
+		</ul>
+	</div>
+
+<script>
+	var app = angular.module("myApp", []);
+	app.controller('ctrl1', function($scope){
+		$scope.firstName = "John",
+		$scope.lastName = "Doe",
+
+		$scope.price = 58,
+
+		$scope.today = 2019-09-13,
+
+		$scope.names = [
+	        {name:'Jani',country:'Norway'},
+	        {name:'Carl',country:'Sweden'},
+	        {name:'Margareth',country:'England'},
+	        {name:'Hege',country:'Norway'},
+	        {name:'Joe',country:'Denmark'},
+	        {name:'Gustav',country:'Sweden'},
+	        {name:'Birgit',country:'Denmark'},
+	        {name:'Mary',country:'England'},
+	        {name:'Kai',country:'Norway'}
+	    ];
+
+	});
+
+</script>
+</body>
+</html>

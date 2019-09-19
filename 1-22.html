@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<title>	</title>
+</head>
+<body>
+	<div ng-app = "myApp" ng-controller = "myCtrl">
+		<select ng-model = "selectName" ng-options = "x for x in names"></select>
+		<hr>
+		<select>
+			<option ng-repeat = "k in names">{{k}}</option>
+		</select>
+		<hr>
+		<select ng-model="selectedCar">
+			<option ng-repeat="x in cars" value="{{$index+1}}">{{x.color}}</option>
+		</select>
+		<hr>
+		<select ng-model="selectedCars" ng-options = "y.model for y in cars">
+		</select>
+		<h1>selected : {{selectedCars.model + " / " +selectedCars.color}}</h1>
+		<hr>
+		<!-- q: 키, w: 값 -->
+		<select ng-model="selectedCar2" ng-options="q for (q, w) in carmodel">
+		</select>
+
+		<h1>You selected: {{selectedCar2}}</h1>
+
+		<hr>
+
+		<select ng-model="selectedCar3" ng-options="w.brand for (q, w) in carbrand">
+		</select>
+	</div>
+
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope){
+		// 배열로 되어있음
+		$scope.names = ["Emil", "Tobias", "Linus"];
+
+		// 객체의 배열로 되어있음
+		$scope.cars = [
+	        {model : "Ford Mustang", color : "red"},
+	        {model : "Fiat 500", color : "white"},
+	        {model : "Volvo XC90", color : "black"}
+		];
+
+		// 키와 값으로 이루어져 있으며 키로 찾기
+		$scope.carmodel = {
+	        car01 : "Ford",
+	        car02 : "Fiat",
+	        car03 : "Volvo"
+	    };
+
+	    // 키와 값으로 이루어져있으며, 값으로 옵션 값 만들기
+	    $scope.carbrand = {
+	        car01 : {brand : "Ford", model : "Mustang", color : "red"},
+	        car02 : {brand : "Fiat", model : "500", color : "white"},
+	        car03 : {brand : "Volvo", model : "XC90", color : "black"}
+	    }
+	});
+</script>
+</body>
+</html>

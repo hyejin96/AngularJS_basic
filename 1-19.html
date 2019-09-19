@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	<h1>{{hex}}</h1>
+	<hr>
+	<!-- <h1>{{3, 7 | myNumber}}</h1> -->
+	<hr>
+	<ul>
+	  	<li ng-repeat="x in counts">{{x | myFormat}}</li>
+	</ul>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.service('hexafy', function() {
+	this.myFunction = function(x, y) {
+		var num1 = x;
+		var num2 = y;
+		return num1 + num2;
+	}
+});
+
+// 1번방법
+app.controller('myCtrl', function($scope, hexafy){
+	$scope.hex = hexafy.myFunction(14, 20);
+});
+
+// 2번 방법 (안됨)
+app.filter('myNumber', ['hexafy', function(hexafy){
+	return function(k) {
+		return hexafy.myFunction(x, y);
+	};
+}]);
+
+// 3번
+app.service('hexafy2', function() {
+    this.myFunc = function (x) {
+        return x.toString(16);
+    }
+});
+app.filter('myFormat',['hexafy2', function(hexafy2) {
+    return function(x) {
+        return hexafy2.myFunc(x);
+    };
+}]);
+app.controller('myCtrl', function($scope) {
+    $scope.counts = [255, 251, 200];
+});
+
+</script>
+
+</body>
+</html>

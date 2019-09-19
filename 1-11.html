@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>		
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+	<style>
+		input.ng-invalid {
+			background-color: lightblue;
+		}
+	</style>
+</head>
+<body>
+	<!-- 유효성 검사 -->
+	<form ng-app = "" name = "myForm" >
+		Email:
+		<input type = "email" name = "myAddress" ng-model = "myText" required>
+		
+		<input type = "password" ng-model = "myForm">
+		<span ng-show="myForm.myAddress.$error.email">
+			Not a valid e-mail
+		</span>
+		<hr>
+		<h1>Status</h1>
+		myForm.myAddress.$valid(요구사항에 맞을때): {{myForm.myAddress.$valid}}
+		<br>
+		myForm.myAddress.$dirty(수정했을때):
+		{{myForm.myAddress.$dirty}}
+		<br>
+		myForm.myAddress.$touched:
+		{{myForm.myAddress.$touched}}
+	</form>
+</body>
+</html>

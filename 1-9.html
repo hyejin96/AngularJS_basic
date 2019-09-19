@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	
+	<hr>
+
+	<div ng-app = "" ng-init="names=[
+	{name:'janny', age:11},
+	{name:'cony',  age:30},
+	{name:'john',  age:24},
+	{name:'cindy', age:16}]">
+	<ul>
+		<li ng-repeat = "n in names">
+			{{n.name + ', ' + n.age}}
+		</li>
+	</ul>
+	</div>
+</body>
+</html>
